@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post } from './posts/post-list/post-list.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'pages';
+  storedPosts: Array<Post> = [];
+
+  onPostAdded(post: Post) {
+    this.storedPosts.push(post)
+  }
 }
