@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post } from './posts/post-list/post-list.component';
+import { Post } from './posts/post.model';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,6 @@ export class AppComponent {
   storedPosts: Array<Post> = [];
 
   onPostAdded(post: Post) {
-    this.storedPosts.push(post)
+    this.storedPosts.push(post);
   }
 }
