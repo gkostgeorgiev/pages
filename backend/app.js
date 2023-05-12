@@ -1,9 +1,37 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
-app.use((req, res) => {
-    res.send('Hello from Express');
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, PUT, OPTIONS"
+  );
+  next();
+});
+
+app.use("/api/posts", (req, res) => {
+  const posts = [
+    {
+      id: "dqa2qdqr54t5t",
+      title: "First server-side post",
+      content: "This is coming from the server",
+    },
+    {
+      id: "fa2wfqa2f",
+      title: "Second server-side post",
+      content: "This is coming from the server too!",
+    },
+  ];
+  res.status(200).json({
+    message: "Posts fetched successfully",
+    payload: posts,
+  });
 });
 
 module.exports = app;

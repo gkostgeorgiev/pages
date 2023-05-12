@@ -20,8 +20,9 @@ export class PostCreateComponent {
       return;
     }
 
-    this.postsService.addPost(form.value.title, form.value.content);
+    let id = Math.random() * 12414124214
+
+    this.postsService.addPost(id, form.value.title, form.value.content);
     form.resetForm();
   }
 }
-  
